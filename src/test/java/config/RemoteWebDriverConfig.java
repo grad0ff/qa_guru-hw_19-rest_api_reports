@@ -2,8 +2,8 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"classpath:config/host/$().properties"})
-public interface HostConfig extends Config {
+@Config.Sources({"classpath:config/RemoteWebDriverConfig.properties"})
+public interface RemoteWebDriverConfig extends Config {
 
     @Key("login")
     String getLogin();

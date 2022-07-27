@@ -2,17 +2,21 @@ package config;
 
 import org.aeonbits.owner.Config;
 
+//@Config.Sources("classpath:config/TestEnvironmentConfig.properties")
 public interface TestEnvironmentConfig extends Config {
 
-    @DefaultValue("http://demowebshop.tricentis.com/")
+    @Key("baseUrl")
     String getBaseUrl();
 
+    @Key("browser")
     @DefaultValue("chrome")
     String getBrowser();
 
-    @DefaultValue("100")
+    @Key("browserVersion")
+    @DefaultValue("103")
     String getBrowserVersion();
 
+    @Key("windowSize")
     @DefaultValue("1366x768")
     String getWindowSize();
 }
