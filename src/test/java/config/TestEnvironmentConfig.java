@@ -2,7 +2,7 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-//@Config.Sources("classpath:config/TestEnvironmentConfig.properties")
+@Config.Sources("classpath:config/TestEnvironmentConfig.properties")
 public interface TestEnvironmentConfig extends Config {
 
     @Key("baseUrl")
