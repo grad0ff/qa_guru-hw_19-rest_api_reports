@@ -1,5 +1,6 @@
 package demowebshop_tests.testbase;
 
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
@@ -11,6 +12,8 @@ public class TestBase {
     protected static void init() {
         uiTestConfigurator.configure();
         apiTestConfigurator.configure();
+        WebDriverRunner.driver().clearCookies();
+        WebDriverRunner.clearBrowserCache();
     }
 
 
