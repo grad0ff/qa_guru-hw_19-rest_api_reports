@@ -1,4 +1,4 @@
-package demowebshop_tests.data;
+package demowebshop_tests.test_data;
 
 import com.codeborne.selenide.SelenideElement;
 

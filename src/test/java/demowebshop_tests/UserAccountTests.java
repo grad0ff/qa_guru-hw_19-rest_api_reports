@@ -2,10 +2,10 @@ package demowebshop_tests;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
-import demowebshop_tests.data.EditUserAccountTestData;
-import demowebshop_tests.data.RegistrationTestData;
-import demowebshop_tests.testbase.TestBase;
+import demowebshop_tests.test_data.EditUserAccountTestData;
+import demowebshop_tests.test_data.RegistrationTestData;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
@@ -13,13 +13,15 @@ import org.openqa.selenium.Cookie;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
-import static demowebshop_tests.data.DefaultUser.*;
+import static com.codeborne.selenide.Selenide.sleep;
+import static demowebshop_tests.test_data.DefaultUser.*;
 import static io.restassured.RestAssured.given;
 
 public class UserAccountTests extends TestBase {
 
     Faker faker = new Faker();
 
+    @Disabled
     @Test
     @Description("Проверяется регистрация пользователя после заполнения обязательных полей формы регистрации")
     @DisplayName("Регистрация пользователя")
@@ -92,6 +94,7 @@ public class UserAccountTests extends TestBase {
                 authorizationCookieValue
         ));
         open(newLocationUrl);
+        sleep(10000);
         EditUserAccountTestData.checkingWebElement.shouldHave(attribute("value", newFirstName));
     }
 }
