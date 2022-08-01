@@ -11,6 +11,6 @@ public interface RemoteWebDriverConfig extends Config {
     @Key("password")
     String getPassword();
 
-    @Key("remoteUri")
-    String getRemoteUri();
+    @Key("remoteUrl")
+    String getRemoteUrl();
 }

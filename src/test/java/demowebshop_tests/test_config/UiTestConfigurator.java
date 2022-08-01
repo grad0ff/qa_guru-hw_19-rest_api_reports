@@ -31,6 +31,6 @@ public class UiTestConfigurator extends TestConfigurator {
         return String.format("http://%s:%s@%s:4444/wd/hub",
                 webDriverConfig.getLogin(),
                 webDriverConfig.getPassword(),
-                webDriverConfig.getRemoteUri());
+                webDriverConfig.getRemoteUrl());
     }
 }
