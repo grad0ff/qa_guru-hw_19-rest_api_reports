@@ -1,8 +1,8 @@
 package demowebshop_tests;
 
 import com.codeborne.selenide.WebDriverRunner;
-import demowebshop_tests.test_config.ApiTestConfigurator;
-import demowebshop_tests.test_config.UiTestConfigurator;
+import config.ApiTestConfigurator;
+import config.UiTestConfigurator;
 import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

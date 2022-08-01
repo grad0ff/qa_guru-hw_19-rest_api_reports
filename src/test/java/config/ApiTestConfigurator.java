@@ -1,4 +1,4 @@
-package demowebshop_tests.test_config;
+package config;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

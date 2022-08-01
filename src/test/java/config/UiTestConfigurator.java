@@ -1,4 +1,4 @@
-package demowebshop_tests.test_config;
+package config;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
