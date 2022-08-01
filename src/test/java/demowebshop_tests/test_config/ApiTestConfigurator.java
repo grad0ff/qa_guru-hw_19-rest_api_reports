@@ -13,7 +13,7 @@ public class ApiTestConfigurator extends TestConfigurator {
 
     private void setRequestSpecification() {
         RestAssured.requestSpecification = new RequestSpecBuilder()
-                .setBaseUri(environmentConfig.getBaseUrl())
+                .setBaseUri(testEnvironmentConfig.getBaseUrl())
                 .build();
     }
 }

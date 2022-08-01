@@ -9,10 +9,10 @@ public class UiTestConfigurator extends TestConfigurator {
 
     @Override
     public void configure() {
-        Configuration.baseUrl = environmentConfig.getBaseUrl();
-        Configuration.browser = environmentConfig.getBrowser();
-        Configuration.browserVersion = environmentConfig.getBrowserVersion();
-        Configuration.browserSize = environmentConfig.getWindowSize();
+        Configuration.baseUrl = testEnvironmentConfig.getBaseUrl();
+        Configuration.browser = testEnvironmentConfig.getBrowser();
+        Configuration.browserVersion = testEnvironmentConfig.getBrowserVersion();
+        Configuration.browserSize = testEnvironmentConfig.getWindowSize();
         if (System.getProperty("host", "local").equals("remote")) {
             Configuration.browserCapabilities = getCapabilities();
             Configuration.remote = getRemoteUrl();
@@ -29,8 +29,8 @@ public class UiTestConfigurator extends TestConfigurator {
 
     private String getRemoteUrl() {
         return String.format("http://%s:%s@%s:4444/wd/hub",
-                webDriverConfig.getLogin(),
-                webDriverConfig.getPassword(),
-                webDriverConfig.getRemoteUrl());
+                remoteWebDriverConfig.getLogin(),
+                remoteWebDriverConfig.getPassword(),
+                remoteWebDriverConfig.getRemoteUrl());
     }
 }
