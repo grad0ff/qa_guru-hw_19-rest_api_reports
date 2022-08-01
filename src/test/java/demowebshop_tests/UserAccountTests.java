@@ -1,19 +1,16 @@
 package demowebshop_tests;
 
-import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
-import demowebshop_tests.data.EditUserAccountTestData;
 import demowebshop_tests.data.RegistrationTestData;
 import demowebshop_tests.testbase.TestBase;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Cookie;
 
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 import static demowebshop_tests.data.DefaultUser.*;
+import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 
 public class UserAccountTests extends TestBase {
@@ -21,32 +18,37 @@ public class UserAccountTests extends TestBase {
     Faker faker = new Faker();
 
     @Test
-    @Description("Проверяется регистрация пользователя после заполнения обязательных полей формы регистрации")
-    @DisplayName("Регистрация пользователя")
+    @Description("Проверяется успешная регистрация пользователя после заполнения обязательных полей формы регистрации")
+    @DisplayName("Успешная регистрация пользователя")
     void registerUser() {
-        String newLocationUrl = given()
-                .cookie(
-                        RegistrationTestData.requestVerificationTokenName,
-                        RegistrationTestData.requestVerificationTokenValue
-                )
-                .formParam(
-                        RegistrationTestData.requestVerificationTokenName,
-                        RegistrationTestData.requestVerificationTokenFormParamValue
-                )
-                .formParam("FirstName", firstName)
-                .formParam("LastName", lastName)
-                .formParam("Email", faker.internet().emailAddress())
-                .formParam("Password", password)
-                .formParam("ConfirmPassword", password)
-                .when()
-                .post(RegistrationTestData.endPoint)
-                .then()
-                .statusCode(302)
-                .cookie("NOPCOMMERCE.AUTH")
-                .extract().header("Location");
+        step("Заполняем и отправляем форму регистрации через Api. Получаем Url редиректа и открываем его в браузере",
+                () -> {
+                    String newLocationUrl = given()
+                            .cookie(
+                                    RegistrationTestData.requestVerificationTokenName,
+                                    RegistrationTestData.requestVerificationTokenValue
+                            )
+                            .formParam(
+                                    RegistrationTestData.requestVerificationTokenName,
+                                    RegistrationTestData.requestVerificationTokenFormParamValue
+                            )
+                            .formParam("FirstName", firstName)
+                            .formParam("LastName", lastName)
+                            .formParam("Email", faker.internet().emailAddress())
+                            .formParam("Password", password)
+                            .formParam("ConfirmPassword", password)
+                            .when()
+                            .post(RegistrationTestData.endPoint)
+                            .then()
+                            .statusCode(302)
+                            .extract().header("Location");
 
-        open(newLocationUrl);
-        RegistrationTestData.checkingWebElement.shouldHave(text(RegistrationTestData.assertionText));
+                    step("Открываем ссылку в браузере ",
+                            () -> open(newLocationUrl));
+                });
+
+        step("Проверяем успешность регистрации",
+                () -> RegistrationTestData.checkingWebElement.shouldHave(text(RegistrationTestData.assertionText)));
     }
 
     @Test
