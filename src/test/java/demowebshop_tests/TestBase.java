@@ -1,6 +1,8 @@
-package demowebshop_tests.testbase;
+package demowebshop_tests;
 
 import com.codeborne.selenide.WebDriverRunner;
+import demowebshop_tests.test_config.ApiTestConfigurator;
+import demowebshop_tests.test_config.UiTestConfigurator;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
@@ -15,6 +17,4 @@ public class TestBase {
         WebDriverRunner.driver().clearCookies();
         WebDriverRunner.clearBrowserCache();
     }
-
-
 }

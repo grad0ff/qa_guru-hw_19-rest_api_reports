@@ -1,4 +1,4 @@
-package demowebshop_tests.testbase;
+package demowebshop_tests.test_config;
 
 import config.RemoteWebDriverConfig;
 import config.TestEnvironmentConfig;

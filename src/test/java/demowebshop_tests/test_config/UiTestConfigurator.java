@@ -1,4 +1,4 @@
-package demowebshop_tests.testbase;
+package demowebshop_tests.test_config;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -31,6 +31,6 @@ public class UiTestConfigurator extends TestConfigurator {
         return String.format("http://%s:%s@%s:4444/wd/hub",
                 webDriverConfig.getLogin(),
                 webDriverConfig.getPassword(),
-                webDriverConfig.getRemoteUri());
+                webDriverConfig.getRemoteUrl());
     }
 }
